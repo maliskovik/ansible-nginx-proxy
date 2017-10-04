@@ -1,0 +1,20 @@
+---
+- name: Nginx main includes
+  copy:
+    src: conf.d/
+    dest: /etc/nginx/conf.d/
+    owner: root
+    group: root
+    mode: 0644
+  notify: Reload nginx
+
+- name: Create proxy configs
+  template:
+    src: "server.conf"
+    dest: "/etc/nginx/sites-enabled/{{ item.name }}-proxy.conf"
+    owner: root
+    group: root
+    mode: 0644
+    force: yes
+  notify: Reload nginx
+  with_items: {{ nginx_proxy_servers }}
