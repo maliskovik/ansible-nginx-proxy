@@ -17,4 +17,4 @@
     mode: 0644
     force: yes
   notify: Reload nginx
-  with_items: {{ nginx_proxy_servers }}
+  with_items: "{{ nginx_proxy_servers }}"
