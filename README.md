@@ -15,11 +15,14 @@
     - scheme: http|https
     - cert: Server certificate
     - cert_key: Server certificate key
+    - server_includes: Include files listed here in server block
+    - location_includes: Include files listed here in / location
     - locations: list of location - if any.
       - name: Name of the location (/something ) - can be any valid ngixn location
       - target: Where to proxy to.
       - redirect: Returns a 301 Redirect
       - scheme: http|https
+      - - includes: include fies listed here under this location.
     - aliases: List of other domains to listen to -> redirects them to domain.
 
 
@@ -29,3 +32,7 @@ specifying them will override the defaults.
 In both cases (server or location), either target or redirect must be defined.
 If target is specified, server will proxy traffic to the target, if a redirect
 is specified, a 301 response will be returned to the client.
+
+## Customizing server configs
+To include special configuration for server configuration(v-hosts), you cn use include files. You can add them with the nginx role - custom configs, by creating include files as {{ nginx_config_files }}/<filename>.inc.  
+After adding them, they can be included in the configuration by specifying them in the nginx_proxy_servers variable under approptiate includes varaible as described above.
