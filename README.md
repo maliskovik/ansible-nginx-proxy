@@ -7,7 +7,7 @@
     cert_key: example.key
     scheme: https
 
--  nginx_proxy_servers:
+-  nginx_https_proxy_servers:
     - name: Humna friendly server name(single word)
     - target: Server to proxy to
     - Redirect: Returns a 301 redirect
@@ -25,7 +25,7 @@
       - - includes: include fies listed here under this location.
     - aliases: List of other domains to listen to -> redirects them to domain.
 
-
+- nginx_http_proxy_servers -> Like nginx_https_proxy_servers but without cert and cert_key
 The "nginx_proxy_defaults" variable can be used to specify the defaults.
 In that case, the appropriate variables in nginx_proxy_servers can be omitted,
 specifying them will override the defaults.

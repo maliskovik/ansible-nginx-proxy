@@ -8,13 +8,24 @@
     mode: 0644
   notify: Reload nginx
 
-- name: Create proxy configs
+- name: Create http proxy configs
   template:
-    src: "server.conf"
+    src: "http_server.conf"
     dest: "/etc/nginx/sites-enabled/{{ item.name }}-proxy.conf"
     owner: root
     group: root
     mode: 0644
     force: yes
   notify: Reload nginx
-  with_items: "{{ nginx_proxy_servers }}"
+  with_items: "{{ nginx_http_proxy_servers }}"
+
+- name: Create https proxy configs
+  template:
+    src: "https_server.conf"
+    dest: "/etc/nginx/sites-enabled/{{ item.name }}-proxy.conf"
+    owner: root
+    group: root
+    mode: 0644
+    force: yes
+  notify: Reload nginx
+  with_items: "{{ nginx_https_proxy_servers }}"
