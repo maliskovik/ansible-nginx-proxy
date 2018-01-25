@@ -4,3 +4,4 @@ nginx_proxy_defaults:
   cert: example.crt
   cert_key: example.key
   scheme: https
+  letsencrypt: false
