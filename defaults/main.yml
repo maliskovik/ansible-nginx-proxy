@@ -5,3 +5,6 @@ nginx_proxy_defaults:
   cert_key: example.key
   scheme: https
   letsencrypt: false
+  restricted: false
+  permited_addresses:
+    - 0.0.0.0/0
