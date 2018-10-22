@@ -6,3 +6,4 @@ proxy_set_header    Host $host;
 proxy_pass_header   Server;
 proxy_set_header    Proxy "";
 proxy_set_header    HTTP_PROXY "";
+proxy_hide_header   X-Frame-Options;
