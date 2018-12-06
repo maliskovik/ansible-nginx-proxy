@@ -12,6 +12,8 @@
     - target: Server to proxy to
     - Redirect: Returns a 301 redirect
     - domain: Domain which to listen on
+    - reverse: (Boolean) Use silent reverse proxy
+    - reverse_name: Name of destination proxy
     - scheme: http|https
     - cert: Server certificate
     - cert_key: Server certificate key
@@ -21,6 +23,8 @@
       - name: Name of the location (/something ) - can be any valid ngixn location
       - target: Where to proxy to.
       - redirect: Returns a 301 Redirect
+      - reverse: (Boolean) Use silent reverse proxy
+      - reverse_name: Name of destination proxy
       - scheme: http|https
       - - includes: include fies listed here under this location.
     - aliases: List of other domains to listen to -> redirects them to domain.
