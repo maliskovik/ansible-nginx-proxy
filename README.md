@@ -10,6 +10,9 @@
 -  nginx_https_proxy_servers:
     - name: Humna friendly server name(single word)
     - target: Server to proxy to
+      - address
+      - http_port(optional)
+      - https_port(optional)
     - Redirect: Returns a 301 redirect
     - domain: Domain which to listen on
     - reverse: (Boolean) Use silent reverse proxy
@@ -22,6 +25,9 @@
     - locations: list of location - if any.
       - name: Name of the location (/something ) - can be any valid ngixn location
       - target: Where to proxy to.
+        - address
+        - http_port(optional)
+        - https_port(optional)
       - redirect: Returns a 301 Redirect
       - reverse: (Boolean) Use silent reverse proxy
       - reverse_name: Name of destination proxy
