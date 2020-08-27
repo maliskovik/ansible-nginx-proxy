@@ -8,3 +8,6 @@ nginx_proxy_defaults:
   restricted: false
   permited_addresses:
     - 0.0.0.0/0
+  basic_auth: false
+
+nginx_proxy_basic_auth_dir: /etc/nginx/htpasswd.d

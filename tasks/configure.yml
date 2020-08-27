@@ -1,4 +1,19 @@
 ---
+- name: Create basic auth dir
+  file:
+    state: directory
+    path: "{{ nginx_proxy_basic_auth_dir }}"
+
+- name: Create httpasswd files
+  htpasswd:
+    path: "{{ nginx_proxy_basic_auth_dir }}/{{ item.name}}"
+    name: "{{ item.username }}"
+    password: "{{ item.password }}"
+    mode: 0640
+    owner: 33
+    group: 33
+  with_items: "{{ basic_auth_users }}"
+
 - name: Nginx main includes
   copy:
     src: conf.d/
