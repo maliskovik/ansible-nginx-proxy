@@ -12,6 +12,7 @@
     mode: 0640
     owner: 33
     group: 33
+    state: "{{ item.state| default('present')}}"
   with_items: "{{ basic_auth_users }}"
 
 - name: Nginx main includes

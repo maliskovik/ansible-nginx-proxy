@@ -43,6 +43,24 @@ In both cases (server or location), either target or redirect must be defined.
 If target is specified, server will proxy traffic to the target, if a redirect
 is specified, a 301 response will be returned to the client.
 
+- basic_auth_users:list of entries for basic auth file
+  - name - name of the nginx_https_proxy_servers entry to associate with
+  - password -password
+  - username - username
+  - state: default=present. use "absent" to remove entry.
+
 ## Customizing server configs
 To include special configuration for server configuration(v-hosts), you cn use include files. You can add them with the nginx role - custom configs, by creating include files as {{ nginx_config_files }}/<filename>.inc.  
 After adding them, they can be included in the configuration by specifying them in the nginx_proxy_servers variable under approptiate includes varaible as described above.
+
+
+## HTTP basic auth
+Add entry to the basic_auth_users list liek this:
+```
+basic_auth_users:
+  - name: server1
+    username: user
+    password: S3cr3tPa55
+```
+To remove the entry, add "state: absent" attribute to the list entry and run the role.
+The entry can then be deleted from the list.
