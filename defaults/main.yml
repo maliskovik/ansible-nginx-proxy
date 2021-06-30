@@ -11,3 +11,6 @@ nginx_proxy_defaults:
   basic_auth: false
 
 nginx_proxy_basic_auth_dir: /etc/nginx/htpasswd.d
+
+nginx_proxy_default_includes:
+  - security_headers.inc
