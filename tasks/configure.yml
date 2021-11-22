@@ -33,6 +33,7 @@
     group: root
     mode: 0644
     force: yes
+    backup: yes
   notify: Reload nginx
   with_items: "{{ nginx_http_proxy_servers }}"
   when: nginx_http_proxy_servers is defined
@@ -45,6 +46,7 @@
     group: root
     mode: 0644
     force: yes
+    backup: yes
   notify: Reload nginx
   with_items: "{{ nginx_https_proxy_servers }}"
   when: nginx_https_proxy_servers is defined
